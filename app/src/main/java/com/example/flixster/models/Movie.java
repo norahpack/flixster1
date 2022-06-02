@@ -3,15 +3,21 @@ package com.example.flixster.models;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.parceler.Parcel;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Parcel
 public class Movie {
+    //fields must be public for parceler
     String posterPath;
     String title;
     String overview;
     String backdropPath;
+
+    //no-arg, empty constructor required for Parceler
+    public Movie(){}
 
     public Movie(JSONObject jsonObject) throws JSONException {
         backdropPath = jsonObject.getString("backdrop_path");
