@@ -1,6 +1,6 @@
-# Project 1 - *Name of App Here*
+# Project 1 - *Flixster app*
 
-**Name of your app** shows the latest movies currently playing in theaters. The app utilizes the Movie Database API to display images and basic information about these movies to the user.
+Flixter App shows the latest movies currently playing in theaters. The app utilizes the Movie Database API to display images and basic information about these movies to the user.
 
 Time spent: **X** hours spent in total
 
@@ -38,6 +38,10 @@ GIF created with [Kap](https://getkap.co/).
 
 Describe any challenges encountered while building the app.
 
+-I had challenges configuring Git because the walkthrough was a different version of Android Studio that gave me many challenges and I spent about an hour or two alone trying to push to GitHub
+
+-I had trouble configuring the posterPath to include the size, I was confused on how to do this and again spent many hours on this line alone because I couldn't find any guidance on how to do it besides vague descriptions.
+
 ## Open-source libraries used
 
 - [Android Async HTTP](https://github.com/loopj/android-async-http) - Simple asynchronous HTTP requests with JSON parsing
@@ -45,7 +49,7 @@ Describe any challenges encountered while building the app.
 
 ## License
 
-    Copyright [yyyy] [name of copyright owner]
+    Copyright [2022] [Norah Pack]
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
