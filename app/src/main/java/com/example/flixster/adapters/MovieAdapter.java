@@ -3,6 +3,7 @@ package com.example.flixster.adapters;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.graphics.Color;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +15,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.bitmap.CenterCrop;
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.example.flixster.MovieDetailsActivity;
 import com.example.flixster.R;
 import com.example.flixster.models.Movie;
@@ -99,7 +102,21 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder>{
         }
 
         public void bind(Movie movie) {
-            tvTitle.setText(movie.getTitle());
+            String rating;
+            String color;
+            if (movie.getVoteAverage()>=7.5){
+                rating=" - HIGHLY RATED!";
+                color="#07910c";
+            } else if (movie.getVoteAverage()>=6){
+                rating="";
+                color="#070c91";
+            } else {
+                rating=" - AUDIENCE THUMBS DOWN";
+                color="#ab0f07";
+            }
+
+            tvTitle.setText((movie.getTitle().toUpperCase()).concat(rating));
+            tvTitle.setTextColor(Color.parseColor(color));
             tvOverview.setText(movie.getOverview());
             String imageUrl;
             int placeholderUrl;
@@ -110,7 +127,11 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder>{
                 imageUrl=movie.getPosterPath();
                 placeholderUrl=R.drawable.flicks_movie_placeholder;
             }
-            Glide.with(context).load(imageUrl).placeholder(placeholderUrl).into(ivPoster);
+            int radius = 40;
+            Glide.with(context).load(imageUrl)
+                    .transform(new CenterCrop(), new RoundedCorners(radius))
+                    .placeholder(placeholderUrl).into(ivPoster);
         }
     }
 }
+
