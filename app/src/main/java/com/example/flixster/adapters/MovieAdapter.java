@@ -19,6 +19,7 @@ import com.bumptech.glide.load.resource.bitmap.CenterCrop;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.example.flixster.MovieDetailsActivity;
 import com.example.flixster.R;
+import com.example.flixster.databinding.ItemMovieBinding;
 import com.example.flixster.models.Movie;
 
 import org.parceler.Parcels;
@@ -37,6 +38,8 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder>{
     Context context;
     List<Movie> movies;
 
+    private ItemMovieBinding binding;
+
     public MovieAdapter(Context context, List<Movie> movies) {
         this.context = context;
         this.movies=movies;
@@ -47,9 +50,10 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder>{
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         Log.d("MovieAdapter", "onCreateViewHolder");
-        View movieView= LayoutInflater.from(context).inflate(R.layout.item_movie, parent, false);
 
-        return new ViewHolder(movieView);
+        LayoutInflater layoutInflater = LayoutInflater.from(context);
+        binding = ItemMovieBinding.inflate(layoutInflater, parent, false);
+        return new ViewHolder(binding);
     }
 
 
@@ -73,9 +77,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder>{
     //represents one row in the View - one movie!
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        TextView tvTitle;
-        TextView tvOverview;
-        ImageView ivPoster;
+        ItemMovieBinding itemMovieBinding;
 
         //when the user clicks on a row, show MovieDetailsActivity for the selected movie.
         @Override
@@ -93,12 +95,11 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder>{
             }
         }
 
-        public ViewHolder(@NonNull View itemView) {
-            super(itemView);
-            tvTitle=itemView.findViewById(R.id.tvTitle);
-            tvOverview=itemView.findViewById(R.id.tvOverview);
-            ivPoster=itemView.findViewById(R.id.ivPoster);
-            itemView.setOnClickListener(this);
+        public ViewHolder(@NonNull ItemMovieBinding itemView) {
+            super(itemView.getRoot());
+            // itemView.setOnClickListener(this);
+            itemView.getRoot().setOnClickListener(this);
+            this.itemMovieBinding = itemView;
         }
 
         public void bind(Movie movie) {
@@ -115,9 +116,9 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder>{
                 color="#ab0f07";
             }
 
-            tvTitle.setText((movie.getTitle().toUpperCase()).concat(rating));
-            tvTitle.setTextColor(Color.parseColor(color));
-            tvOverview.setText(movie.getOverview());
+            itemMovieBinding.tvTitle.setText((movie.getTitle().toUpperCase()).concat(rating));
+            itemMovieBinding.tvTitle.setTextColor(Color.parseColor(color));
+            itemMovieBinding.tvOverview.setText(movie.getOverview());
             String imageUrl;
             int placeholderUrl;
             if (context.getResources().getConfiguration().orientation== Configuration.ORIENTATION_LANDSCAPE){
@@ -130,7 +131,9 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder>{
             int radius = 40;
             Glide.with(context).load(imageUrl)
                     .transform(new CenterCrop(), new RoundedCorners(radius))
-                    .placeholder(placeholderUrl).into(ivPoster);
+                    .placeholder(placeholderUrl).into(itemMovieBinding.ivPoster);
+
+
         }
     }
 }
