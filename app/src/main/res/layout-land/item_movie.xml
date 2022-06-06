@@ -3,12 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:paddingVertical="16dp">
 
     <ImageView
         android:id="@+id/ivPoster"
         android:layout_width="350dp"
         android:layout_height="170dp"
+        android:outlineAmbientShadowColor="#D56F6F"
         tools:ignore="ImageContrastCheck"
         tools:srcCompat="@tools:sample/avatars" />
 
@@ -31,6 +33,8 @@
         android:layout_marginStart="5dp"
         android:layout_marginTop="5dp"
         android:layout_toEndOf="@+id/ivPoster"
+        android:textAlignment="viewStart"
+        android:textColor="@android:color/white"
         android:textSize="14sp"
         tools:text="Some dudes do some stuff and they edo some more stuff and I am trying to type a long description so that this is a little bit more realistic length hoorahy" />
 </RelativeLayout>
