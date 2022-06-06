@@ -29,6 +29,8 @@ The following **additional** features are implemented:
 
 ## Video Walkthrough
 
+UPDATED SINCE GIF CREATED TO IMPROVE THE UI
+
 Here's a walkthrough of implemented user stories:
 
 <img src='flixstergif.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
