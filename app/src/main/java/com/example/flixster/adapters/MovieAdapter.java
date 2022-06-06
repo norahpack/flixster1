@@ -107,10 +107,10 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder>{
             String color;
             if (movie.getVoteAverage()>=7.5){
                 rating=" - HIGHLY RATED!";
-                color="#07910c";
+                color="#90EE90";
             } else if (movie.getVoteAverage()>=6){
                 rating="";
-                color="#070c91";
+                color="#ADD8E6";
             } else {
                 rating=" - AUDIENCE THUMBS DOWN";
                 color="#ab0f07";

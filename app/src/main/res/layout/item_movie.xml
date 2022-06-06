@@ -3,12 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:layout_marginVertical="16dp">
 
     <ImageView
         android:id="@+id/ivPoster"
         android:layout_width="120dp"
         android:layout_height="180dp"
+        android:layout_centerVertical="true"
         tools:ignore="ImageContrastCheck"
         tools:srcCompat="@tools:sample/avatars" />
 
@@ -17,8 +19,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginStart="6dp"
+        android:layout_marginTop="1dp"
         android:layout_toEndOf="@+id/ivPoster"
         android:textSize="24sp"
         tools:text="Fast and furious yee yee long title wooho" />
@@ -31,6 +33,7 @@
         android:layout_marginStart="5dp"
         android:layout_marginTop="5dp"
         android:layout_toEndOf="@+id/ivPoster"
+        android:textColor="@color/white"
         android:textSize="14sp"
         tools:text="Some dudes do some stuff and they edo some more stuff and I am trying to type a long description so that this is a little bit more realistic length hoorahy" />
 </RelativeLayout>
